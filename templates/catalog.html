@@ -1,0 +1,35 @@
+<!-- templates/catalog.html -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/catalog">Каталог</a></h1>
+        </div>
+
+        <div class="sort-block">
+            {# Здесь должен быть раздел с сортировкой #}
+            <a href="?sort=name">Sort by name</a>
+            <a href="?sort=min_price">Sort by price (ascending)</a>
+            <a href="?sort=max_price">Sort by price (descending)</a>
+        </div>
+
+        <div class="content">
+            {# Здесь должен отображаться каталог с телефонами #}
+            <a href="{% url 'phone_detail' phone.slug %}">{{ phone.name }}</a>
+                - {{ phone.price }}
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
